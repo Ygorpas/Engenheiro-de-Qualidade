@@ -1,31 +1,31 @@
-Feature: Tela de cadastro - Checkout
+Funcionalidade: Tela de cadastro - Checkout
   Como cliente da EBAC-SHOP
   Quero concluir meu cadastro
   Para finalizar minha compra
 
-  Background:
-    Given que estou na página de cadastro do checkout
+  Contexto:
+    Dado que estou na página de cadastro do checkout
 
-  Scenario: Cadastro com todos os campos obrigatórios
-    When preencho todos os campos obrigatórios
-    And clico em "Finalizar cadastro"
-    Then devo ver mensagem "Cadastro realizado com sucesso"
+  Cenário: Cadastro completo com sucesso
+    Quando preencho todos os campos obrigatórios
+    E clico em "Finalizar cadastro"
+    Então devo ver a mensagem "Cadastro realizado com sucesso"
 
-  Scenario: E-mail com formato inválido
-    When preencho todos os campos obrigatórios
-    And insiro e-mail "usuario_invalido"
-    And clico em "Finalizar cadastro"
-    Then devo ver mensagem de erro "E-mail inválido"
+  Cenário: E-mail inválido
+    Quando preencho todos os campos obrigatórios
+    E informo e-mail "usuario_invalido"
+    E clico em "Finalizar cadastro"
+    Então devo ver a mensagem de erro "E-mail inválido"
 
-  Scenario Outline: Campos vazios
-    When tento finalizar cadastro com campo "<campo>" vazio
-    Then devo ver mensagem de alerta "Preencha todos os campos obrigatórios"
+  Esquema do Cenário: Campos obrigatórios em branco
+    Quando tento finalizar cadastro deixando "<campo>" vazio
+    Então devo ver a mensagem de alerta "Preencha todos os campos obrigatórios"
 
-    Examples:
-      | campo       |
-      | nome        |
-      | sobrenome   |
-      | endereço    |
-      | cidade      |
-      | cep         |
-      | e-mail      |
+    Exemplos:
+      | campo     |
+      | nome      |
+      | sobrenome |
+      | endereço  |
+      | cidade    |
+      | cep       |
+      | e-mail    |
